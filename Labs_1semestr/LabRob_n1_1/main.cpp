@@ -13,7 +13,7 @@ public:
     void push_back(T data); //додає елемент в кінець списку
     int GetSize(){return Size;} //визначає розмір
     void Show(); //виводить список
-    void remove(); //видаляє елемент з початку
+    void remove(); //видаляє елемент з початку списка
     T& operator[](const int index); //перегрузка оператора
     int find(T element); //шукає елемент за значенням
     void find_aliquot_2(); //для пошуку першого елемента кратного 2
