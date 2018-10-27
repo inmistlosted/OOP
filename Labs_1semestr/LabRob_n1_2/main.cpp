@@ -6,8 +6,8 @@ using namespace std;
 class Point         //клас точки
 {
 public:
-    double x;  //координата х
-    double y;  //координата у
+    double x;  
+    double y;
 };
 
 class Distance  //клас відрізка
