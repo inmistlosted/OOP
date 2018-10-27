@@ -12,7 +12,7 @@ public:
 
     void push_back(T data); //додає елемент в кінець списку
     int GetSize(){return Size;} //визначає розмір
-    void Show(); //виводить всі елементи списку
+    void Show(); //виводить список
     void remove(); //видаляє елемент с початку
     T& operator[](const int index); //перегрузка оператора
     int find(T element); //шукає елемент за значенням
