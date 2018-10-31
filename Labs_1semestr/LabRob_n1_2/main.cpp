@@ -20,7 +20,7 @@ public:
         double ln = sqrt(((b.x - a.x) * (b.x - a.x)) + ((b.y - a.y) * (b.y - a.y)));
         return ln;
     }
-    double length_2() // довжина відрізка в квадраті
+    double length_2() // довжина відрізка у квадраті
     {
         double ln_2 =((b.x - a.x) * (b.x - a.x)) + ((b.y - a.y) * (b.y - a.y));
         return ln_2;
