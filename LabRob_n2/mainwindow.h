@@ -24,10 +24,12 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    //публічні слоти які буду використовувати
 public slots:
-    void Open_alarm();
-    void Open_timer();
+    void Open_alarm(); //виклик вікна для добавлення будильника
+    void Open_timer(); //виклик вікна для добавлення таймера
 
+    //об'єкти які знадобляться
 private:
     Ui::MainWindow *ui;
     QTime *time;
@@ -36,9 +38,10 @@ private:
     Timer_diag *tmr_diag;
     Timer *tmr;
 
+    //приватні слоти які буду використовувати
 private slots:
-    void Add_Alarm();
-    void Add_Timer();
+    void Add_Alarm(); //добавлення будильника
+    void Add_Timer(); //добавлення таймера
 };
 
 #endif // MAINWINDOW_H

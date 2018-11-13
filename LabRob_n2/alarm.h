@@ -19,12 +19,12 @@ public:
     explicit Alarm(QWidget *parent = nullptr);
     ~Alarm();
 
-    void setTime(const QString& time);
-    QString getTime();
+    void setTime(const QString& time); //функція для встановлення отриманого часу
+    QString getTime(); //функція для отримання часу
 
 public slots:
-    void Alrm();
-    void Remove();
+    void Alrm(); //функція де описано як працює будильник
+    void Remove(); //функція яка видаляє будильник
 
 private:
     Ui::Alarm *ui;

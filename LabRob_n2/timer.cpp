@@ -7,14 +7,17 @@ Timer::Timer(QWidget *parent) :
     ui(new Ui::Timer)
 {
     ui->setupUi(this);
+    //створення таймера
     timer = new QTimer(this);
     timer->setInterval(1000);
 
+    //підключення сигналів до слотів
     connect(timer, SIGNAL(timeout()), this, SLOT(Tmr()));
     connect(ui->start_btn, SIGNAL(clicked()), this, SLOT(Start()));
     connect(ui->stop_btn, SIGNAL(clicked()), this, SLOT(Stop()));
     connect(ui->remove_btn, SIGNAL(clicked()), this, SLOT(Remove()));
 
+    //запуск таймера
     timer->start();
 }
 
@@ -23,24 +26,28 @@ Timer::~Timer()
     delete ui;
 }
 
+//встановлює години
 void Timer::setHours(const int &hours)
 {
     ui->lcdNumber_h->display(hours);
     ui->lcdNumber_h->setPalette(Qt::magenta);
 }
 
+//встановлює хвилини
 void Timer::setMin(const int &mins)
 {
     ui->lcdNumber_m->display(mins);
     ui->lcdNumber_m->setPalette(Qt::magenta);
 }
 
+//встановлює секунди
 void Timer::setSec(const int &secs)
 {
     ui->lcdNumber_s->display(secs);
     ui->lcdNumber_s->setPalette(Qt::magenta);
 }
 
+//функція де описано як працює таймер
 void Timer::Tmr()
 {
     int h = ui->lcdNumber_h->value();
@@ -50,10 +57,11 @@ void Timer::Tmr()
     if(h == 0 && m == 0 && s == 0)
     {
         timer->stop();
+        //виводить попередження що спрацював таймер
         QMessageBox msg;
         QApplication::beep();
         msg.warning(this, tr("TIMEOUT"), tr("<font color = white>YOUR TIMER HAS JUST FINISHED ITS WORK</font>"), QMessageBox::Ok);
-msg.setStyleSheet("QMessageBox{background: rgb(255,0,0);  border: none;font-family: Arial; font-style: normal;  font-size: 15pt; color: #000000 ; }");
+        msg.setStyleSheet("QMessageBox{background: rgb(255,0,0);  border: none;font-family: Arial; font-style: normal;  font-size: 15pt; color: #000000 ; }");
         this->close();
     }
     else
@@ -75,17 +83,20 @@ msg.setStyleSheet("QMessageBox{background: rgb(255,0,0);  border: none;font-fami
     }
 }
 
+//функція яка видаляє таймер
 void Timer::Remove()
 {
     timer->stop();
     this->close();
 }
 
+//функція яка стартує таймер
 void Timer::Start()
 {
     timer->start();
 }
 
+//функція яка зупиняє таймер
 void Timer::Stop()
 {
     timer->stop();

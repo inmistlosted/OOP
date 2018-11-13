@@ -16,10 +16,10 @@ public:
     explicit Alarm_diag(QWidget *parent = nullptr);
     ~Alarm_diag();
 public slots:
-    int getHours();
-    int getMin();
-    int getSec();
-    QTime alrm();
+    int getHours(); //отримує введені години
+    int getMin(); //отримує введені хвилини
+    int getSec(); //отримує введені секунди
+    QTime alrm(); //повертає введений час
 
 private:
     Ui::Alarm_diag *ui;

@@ -17,9 +17,9 @@ public:
     ~Timer_diag();
 
 public slots:
-    int getHours();
-    int getMin();
-    int getSec();
+    int getHours(); //отримує введені години
+    int getMin(); //отримує введені хвилини
+    int getSec(); //отримує введені секунди
 
 private:
     Ui::Timer_diag *ui;

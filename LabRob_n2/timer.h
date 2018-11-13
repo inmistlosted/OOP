@@ -18,15 +18,15 @@ public:
     explicit Timer(QWidget *parent = nullptr);
     ~Timer();
 
-    void setHours(const int& hours);
-    void setMin(const int& mins);
-    void setSec(const int& secs);
+    void setHours(const int& hours); //встановлює години
+    void setMin(const int& mins); //встановлює хвилини
+    void setSec(const int& secs); //встановлює секунди
 
 public slots:
-    void Tmr();
-    void Remove();
-    void Start();
-    void Stop();
+    void Tmr(); //функція де описано як працює таймер
+    void Remove(); //функція яка видаляє таймер
+    void Start(); //функція яка стартує таймер
+    void Stop(); //функція яка зупиняє таймер
 
 private:
     Ui::Timer *ui;
