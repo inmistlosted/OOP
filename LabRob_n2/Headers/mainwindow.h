@@ -1,3 +1,12 @@
+/**
+  mainwindow.h
+  Purpose: shows and operates with timers and alarms
+
+  @author inmistlosted
+  @version 1.0
+*/
+
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -24,12 +33,22 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    //публічні слоти які буду використовувати
-public slots:
-    void Open_alarm(); //виклик вікна для добавлення будильника
-    void Open_timer(); //виклик вікна для добавлення таймера
 
-    //об'єкти які знадобляться
+public slots:
+    /**
+     * calls a dialog window for inputing time for alarms
+     *
+     * @brief Open_alarm
+     */
+    void Open_alarm();
+
+    /**
+     * calls a dialog window for inputing time for timers
+     *
+     * @brief Open_timer
+     */
+    void Open_timer();
+
 private:
     Ui::MainWindow *ui;
     QTime *time;
@@ -38,9 +57,20 @@ private:
     Timer_diag *tmr_diag;
     Timer *tmr;
 
-    //приватні слоти які буду використовувати
+
 private slots:
+    /**
+     * adds alarm
+     *
+     * @brief Add_Alarm
+     */
     void Add_Alarm(); //добавлення будильника
+
+    /**
+     * adds timer
+     *
+     * @brief Add_Timer
+     */
     void Add_Timer(); //добавлення таймера
 };
 

@@ -1,3 +1,8 @@
+/**
+  alarm_diag.cpp
+  Purpose: Sets time in alarms
+*/
+
 #include "alarm_diag.h"
 #include "ui_alarm_diag.h"
 
@@ -6,7 +11,7 @@ Alarm_diag::Alarm_diag(QWidget *parent) :
     ui(new Ui::Alarm_diag)
 {
     ui->setupUi(this);
-    //підключення сигналів до слотів
+    //connects signals to slots
     connect(ui->Add_btn, SIGNAL(clicked()), SLOT(accept()));
 }
 
@@ -15,28 +20,28 @@ Alarm_diag::~Alarm_diag()
     delete ui;
 }
 
-//отримує введені години
+//receives inputed hours
 int Alarm_diag::getHours()
 {
     int h = ui->spinBox_h->value();
     return h;
 }
 
-//отримує введені хвилини
+//receives inputed minutes
 int Alarm_diag::getMin()
 {
     int m = ui->spinBox_m->value();
     return m;
 }
 
-//отримує введені секунди
+//receives inputed seconds
 int Alarm_diag::getSec()
 {
     int s = ui->spinBox_s->value();
     return s;
 }
 
-//повертає введений час
+//returns inputed time
 QTime Alarm_diag::alrm()
 {
     QTime t(getHours(), getMin(), getSec());

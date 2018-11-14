@@ -1,3 +1,11 @@
+/**
+  mainwindow.cpp
+  Purpose: shows and operates with timers and alarms
+
+  @author inmistlosted
+  @version 1.0
+*/
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
@@ -10,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     alarm_diag = new Alarm_diag(this);
     tmr_diag = new Timer_diag(this);
 
-//підключення сигналів до слотів
+//connects signals to slots
     connect(ui->add_alarm_btn, SIGNAL(clicked()), this, SLOT(Open_alarm()));
     connect(ui->add_timer_btn, SIGNAL(clicked()), this, SLOT(Open_timer()));
     connect(alarm_diag, SIGNAL(accepted()), this, SLOT(Add_Alarm()));
@@ -22,14 +30,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//відкриває діалогове вікно для добавлення будильника
+//calls a dialog window for inputing time for alarms
 void MainWindow::Open_alarm()
 {
 
     alarm_diag->open();
 }
 
-//створює та додає новий віджет будильника
+//adds alarm
 void MainWindow::Add_Alarm()
 {
     qDebug() << "Addind new alarm";
@@ -38,14 +46,14 @@ void MainWindow::Add_Alarm()
     ui->alarm_Layout->addWidget(alarm);
 }
 
-//відкриває діалогове вікно для добавлення таймера
+//calls a dialog window for inputing time for timers
 void MainWindow::Open_timer()
 {
 
     tmr_diag->open();
 }
 
-//створює та додає новий віджет таймера
+//adds timer
 void MainWindow::Add_Timer()
 {
     qDebug() << "Addind new timer";

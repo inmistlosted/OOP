@@ -25,26 +25,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-    alarm_diag.cpp \
-    alarm.cpp \
-    timer.cpp \
-    timer_diag.cpp
+        Sources\main.cpp \
+        Sources\mainwindow.cpp \
+    Sources\alarm_diag.cpp \
+    Sources\alarm.cpp \
+    Sources\timer.cpp \
+    Sources\timer_diag.cpp
 
 HEADERS += \
-        mainwindow.h \
-    alarm_diag.h \
-    alarm.h \
-    timer.h \
-    timer_diag.h
+        Headers\mainwindow.h \
+    Headers\alarm_diag.h \
+    Headers\alarm.h \
+    Headers\timer.h \
+    Headers\timer_diag.h
 
 FORMS += \
-        mainwindow.ui \
-    alarm_diag.ui \
-    alarm.ui \
-    timer.ui \
-    timer_diag.ui
+        Forms\mainwindow.ui \
+    Forms\alarm_diag.ui \
+    Forms\alarm.ui \
+    Forms\timer.ui \
+    Forms\timer_diag.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

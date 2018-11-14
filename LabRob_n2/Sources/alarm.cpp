@@ -1,3 +1,8 @@
+/**
+  alarm.cpp
+  Purpose: Makes alarms work
+*/
+
 #include "alarm.h"
 #include "ui_alarm.h"
 
@@ -6,15 +11,15 @@ Alarm::Alarm(QWidget *parent) :
     ui(new Ui::Alarm)
 {
     ui->setupUi(this);
-    //створення таймера
+    //makes timer
     timer = new QTimer(this);
     timer->setInterval(1000);
 
-    //підключення сигналів до слотів
+    //connects signals to slots
     connect(timer, SIGNAL(timeout()), this, SLOT(Alrm()));
     connect(ui->remove_btn, SIGNAL(clicked()), this, SLOT(Remove()));
 
-    //запуск таймера
+    //start timers
     timer->start();
 }
 
@@ -23,24 +28,24 @@ Alarm::~Alarm()
     delete ui;
 }
 
-//функція для встановлення отриманого часу
+//sets received time
 void Alarm::setTime(const QString& time)
 {
     ui->time_label->setText(time);
 }
 
-//функція для отримання часу
+//receives time
 QString Alarm::getTime()
 {
     return ui->time_label->text();
 }
 
-//функція де описано як працює будильник
+//describes how alarm is working
 void Alarm::Alrm()
 {
     if(ui->time_label->text() == QTime::currentTime().toString())
     {
-        //виводить попередження що спрацював будильник
+        //calls the warning dialog that the alarm went off
         QMessageBox msg;
         QApplication::beep();
         msg.warning(this, tr("ALARM"), ui->time_label->text(), QMessageBox::Ok);
@@ -49,7 +54,7 @@ void Alarm::Alrm()
     }
 }
 
-//функція яка видаляє будильник
+//removes alarm
 void Alarm::Remove()
 {
     timer->stop();
