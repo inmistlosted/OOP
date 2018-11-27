@@ -8,6 +8,8 @@
 
 #include <QDialog>
 #include <QTime>
+#include <QMessageBox>
+#include <QDebug>
 
 namespace Ui {
 class Alarm_diag;
@@ -53,6 +55,14 @@ public slots:
      * @return inputed time
      */
     QTime alrm();
+
+    /**
+     * receives inputed music
+     *
+     * @brief Add_music
+     * @return url of music
+     */
+    QString Add_music();
 
 private:
     Ui::Alarm_diag *ui;

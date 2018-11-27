@@ -25,6 +25,22 @@ QMessageBox {
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
+       <widget class="QPushButton" name="custom_btn">
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: 	#808000;
+color: #FF8000;</string>
+        </property>
+        <property name="text">
+         <string>Add few custom timers</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="title">
         <property name="font">
          <font>
@@ -74,13 +90,13 @@ color:  #FF8000;
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer">
+         <spacer name="horizontalSpacer_4">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>20</height>
            </size>
           </property>

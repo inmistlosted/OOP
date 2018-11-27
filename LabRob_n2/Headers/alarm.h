@@ -11,6 +11,8 @@
 #include <QTimer>
 #include <QTime>
 #include <QMessageBox>
+#include <QSound>
+#include <QDebug>
 
 namespace Ui {
 class Alarm;
@@ -40,6 +42,22 @@ public:
      */
     QString getTime();
 
+    /**
+     * sets music
+     *
+     * @brief setMusic
+     * @param music
+     */
+    void setMusic(const QString& music);
+
+    /**
+     * gets music
+     *
+     * @brief getMusic
+     * @return url of music
+     */
+    QString getMusic();
+
 public slots:
     /**
      * describes how alarm is working
@@ -55,9 +73,12 @@ public slots:
      */
     void Remove();
 
+
+
 private:
     Ui::Alarm *ui;
     QTimer *timer;
+    QString *sound;
 };
 
 #endif // ALARM_H

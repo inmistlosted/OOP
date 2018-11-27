@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,1">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,1,1">
    <item>
     <widget class="QLabel" name="time_label">
      <property name="font">
@@ -30,6 +30,13 @@
      </property>
      <property name="text">
       <string>00:00:00</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>music</string>
      </property>
     </widget>
    </item>

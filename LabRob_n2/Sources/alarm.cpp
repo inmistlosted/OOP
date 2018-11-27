@@ -3,14 +3,17 @@
   Purpose: Makes alarms work
 */
 
-#include "alarm.h"
+#include "Headers/alarm.h"
 #include "ui_alarm.h"
+#include <QtMultimedia/QSound>
+
 
 Alarm::Alarm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Alarm)
 {
     ui->setupUi(this);
+    sound = new QString;
     //makes timer
     timer = new QTimer(this);
     timer->setInterval(1000);
@@ -40,6 +43,19 @@ QString Alarm::getTime()
     return ui->time_label->text();
 }
 
+//gets music
+QString Alarm::getMusic()
+{
+    return ui->label->text();
+}
+
+//sets music
+void Alarm::setMusic(const QString& music)
+{
+    ui->label->hide();
+    ui->label->setText(music);
+}
+
 //describes how alarm is working
 void Alarm::Alrm()
 {
@@ -47,7 +63,7 @@ void Alarm::Alrm()
     {
         //calls the warning dialog that the alarm went off
         QMessageBox msg;
-        QApplication::beep();
+        QSound::play(getMusic());
         msg.warning(this, tr("ALARM"), ui->time_label->text(), QMessageBox::Ok);
         msg.setStyleSheet("color: white");
         this->close();
@@ -60,3 +76,5 @@ void Alarm::Remove()
     timer->stop();
     this->close();
 }
+
+

@@ -3,7 +3,7 @@
   Purpose: Sets time in alarms
 */
 
-#include "alarm_diag.h"
+#include "Headers/alarm_diag.h"
 #include "ui_alarm_diag.h"
 
 Alarm_diag::Alarm_diag(QWidget *parent) :
@@ -47,3 +47,37 @@ QTime Alarm_diag::alrm()
     QTime t(getHours(), getMin(), getSec());
     return t;
 }
+
+//receives inputed music
+QString Alarm_diag::Add_music()
+{
+    if(ui->radioButton->isChecked())
+    {
+    qDebug() << "music 1 was chosen";
+    return "music/electronic.wav";
+    }
+    else if(ui->radioButton_2->isChecked())
+    {
+    qDebug() << "music 2 was chosen";
+    return "music/startrek.wav";
+    }
+    else if(ui->radioButton_3->isChecked())
+    {
+    qDebug() << "music 3 was chosen";
+    return "music/emergency.wav";
+    }
+    else if(ui->radioButton_4->isChecked())
+    {
+    qDebug() << "music 4 was chosen";
+    return "music/strange_laugh.wav";
+    }
+    else
+    {
+    qDebug() << "music 5 was chosen";
+    return "music/submarine_alarm.wav";
+    }
+}
+
+
+
+

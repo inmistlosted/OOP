@@ -3,7 +3,7 @@
   Purpose: shows and operates with timers and alarms
 
   @author inmistlosted
-  @version 1.0
+  @version 1.1
 */
 
 
@@ -56,6 +56,11 @@ private:
     Alarm *alarm;
     Timer_diag *tmr_diag;
     Timer *tmr;
+    Timer *tmr1;
+    Timer *tmr2;
+    Timer *tmr3;
+    Timer *tmr4;
+    Timer *tmr5;
 
 
 private slots:
@@ -72,6 +77,13 @@ private slots:
      * @brief Add_Timer
      */
     void Add_Timer(); //добавлення таймера
+
+    /**
+     * adds custom timers
+     *
+     * @brief Add_Custom_Timers
+     */
+    void Add_Custom_Timers();
 };
 
 #endif // MAINWINDOW_H

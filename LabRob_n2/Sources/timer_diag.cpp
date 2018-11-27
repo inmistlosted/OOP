@@ -3,7 +3,7 @@
   Purpose: Sets time in timers
 */
 
-#include "timer_diag.h"
+#include "Headers/timer_diag.h"
 #include "ui_timer_diag.h"
 
 Timer_diag::Timer_diag(QWidget *parent) :
