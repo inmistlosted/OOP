@@ -91,187 +91,165 @@ int main() {
     }
     else if(l == 4)
     {
-        cout << "What geometric figure do you want to make?\nEnter:\n 1 - Triangle\n 2 - Quadrilateral\n 3 - Pentagon" << endl;
-        cin >> i;
-        cout << endl;
+        list<Figure> figures;
 
-        if(i == 1)
-        {
-            Point a;
-            Point b;
-            Point c;
-            cout << "Enter please coordinates of point A: ";
-            cin >> a.x >> a.y;
-            cout << "Enter please coordinates of point B: ";
-            cin >> b.x >> b.y;
-            cout << "Enter please coordinates of point C: ";
-            cin >> c.x >> c.y;
-            cout << endl;
 
-            Line l(a,b,c);
-            l.OneLine();
-            Distance ab;
-            ab.a = a;
-            ab.b = b;
-            Distance ac;
-            ac.a = a;
-            ac.b = c;
-            Distance bc;
-            bc.a = b;
-            bc.b = c;
+        Point a;
+        Point b;
+        Point c;
+        a.x = 0;
+        a.y = 0;
+        b.x = 2;
+        b.y = 0;
+        c.x = 0;
+        c.y = 2;
 
-            if(ab.NotSimiliar() && bc.NotSimiliar() && ac.NotSimiliar())
-            {
-                Triangle abc(ab,bc,ac);
-                if(!abc.IsTriangle()) {
-                    list<Triangle> list_of_triangles;
-                    list_of_triangles.push_back(abc);
+        Line l(a, b, c);
+        l.OneLine();
+        Distance ab;
+        ab.a = a;
+        ab.b = b;
+        Distance ac;
+        ac.a = a;
+        ac.b = c;
+        Distance bc;
+        bc.a = b;
+        bc.b = c;
 
-                    Type_of_Tri abc1(ab, bc, ac);
-                    cout << "Length: \nAB = " << ab.length() << "\nBC = " << bc.length() << "\nAC = " << ac.length() << endl;
-                    cout << "Perimetr ABC = " << abc.Perimetr() << endl;
-                    cout << "Square ABC = " << abc.Square() << endl;
-                    if(!abc1.IsRect())
-                    {
-                        abc1.Show_Rect();
-                    }
-                    abc1.IsIsos();
-
-                    if(!list_of_triangles.empty())
-                    {
-                        cout << "Your Triangle was added to the List of Triangles!!!!!!!!!!!!!" << endl;
-                    }
-                }
+        if (ab.NotSimiliar() && bc.NotSimiliar() && ac.NotSimiliar()) {
+            Triangle abc(ab, bc, ac);
+            if (!abc.IsTriangle()) {
+                abc.S = abc.Square();
+                abc.P = abc.Perimetr();
+                figures.push_back(abc);
             }
         }
-        else if(i == 2)
-        {
-            Point a;
-            Point b;
-            Point c;
-            Point d;
-            cout << "Enter please coordinates of point A: ";
-            cin >> a.x >> a.y;
-            cout << "Enter please coordinates of point B: ";
-            cin >> b.x >> b.y;
-            cout << "Enter please coordinates of point C: ";
-            cin >> c.x >> c.y;
-            cout << "Enter please coordinates of point D: ";
-            cin >> d.x >> d.y;
-            cout << endl;
-            Line abc(a,b,c);
-            Line bcd(b,c,d);
-            Line acd(a,c,d);
-            Line abd(a,b,d);
 
-            Distance ab;
-            ab.a = a;
-            ab.b = b;
-            Distance bc;
-            bc.a = b;
-            bc.b = c;
-            Distance cd;
-            cd.a = c;
-            cd.b = d;
-            Distance ad;
-            ad.a = a;
-            ad.b = d;
-            Distance ac;
-            ac.a = a;
-            ac.b = c;
+        Point d;
+        d.x = 2;
+        d.y = 2;
+        Line bcd(b, c, d);
+        Line acd(a, c, d);
+        Line abd(a, b, d);
 
-            if(ab.NotSimiliar() && bc.NotSimiliar() && cd.NotSimiliar() && ad.NotSimiliar())
-            {
-                if(!abc.OneLine() && !bcd.OneLine() && !abd.OneLine() && !acd.OneLine())
-                {
-                    Quadrilateral abcd(ab,bc,cd,ad,ac);
+        Distance cd;
+        cd.a = c;
+        cd.b = d;
+        Distance ad;
+        ad.a = a;
+        ad.b = d;
 
-                    list<Quadrilateral> list_of_Quad;
-                    list_of_Quad.push_back(abcd);
+        if (ab.NotSimiliar() && bc.NotSimiliar() && cd.NotSimiliar() && ad.NotSimiliar()) {
+            if (!l.OneLine() && !bcd.OneLine() && !abd.OneLine() && !acd.OneLine()) {
+                Quadrilateral abcd(ab, bc, cd, ad, ac);
+                Type_of_Quad abcd2(ab, bc, cd, ad, ac);
+                abcd.P = abcd.Perimetr();
+                abcd.S = abcd2.S_Sq();
+                figures.push_back(abcd);
 
-                    Type_of_Quad abcd2(ab, bc, cd, ad, ac);
-                    cout << "Length: \nAB = " << ab.length() << "\nBC = " << bc.length() << "\nCD = " << cd.length() << "\nAD = " << ad.length() << endl;
-                    abcd2.IsParallelogram();
-                    abcd2.IsRhombus();
-                    abcd2.IsTrapeze();
-                    cout << "Perimetr ABCD = " << abcd.Perimetr() << endl;
 
-                    if(!list_of_Quad.empty())
-                    {
-                        cout << "Your Quadrilateral was added to the List of Quadrilaterals!!!!!!!!!!!!!" << endl;
-                    }
-                }
-            }
-        }else if(i == 3)
-        {
-            Point a;
-            Point b;
-            Point c;
-            Point d;
-            Point e;
-            cout << "Enter please coordinates of point A: ";
-            cin >> a.x >> a.y;
-            cout << "Enter please coordinates of point B: ";
-            cin >> b.x >> b.y;
-            cout << "Enter please coordinates of point C: ";
-            cin >> c.x >> c.y;
-            cout << "Enter please coordinates of point D: ";
-            cin >> d.x >> d.y;
-            cout << "Enter please coordinates of point E: ";
-            cin >> e.x >> e.y;
-            cout << endl;
-            Line abc(a,b,c);
-            Line bcd(b,c,d);
-            Line acd(a,c,d);
-            Line abd(a,b,d);
-            Line abe(a,b,e);
-            Line ace(a,c,e);
-            Line ade(a,d,e);
-            Line bce(b,c,e);
-            Line bde(b,d,e);
-            Line cde(c,d,e);
 
-            Distance ab;
-            ab.a = a;
-            ab.b = b;
-            Distance bc;
-            bc.a = b;
-            bc.b = c;
-            Distance cd;
-            cd.a = c;
-            cd.b = d;
-            Distance de;
-            de.a = d;
-            de.b = e;
-            Distance ae;
-            ae.a = a;
-            ae.b = e;
-
-            if(ab.NotSimiliar() && bc.NotSimiliar() && cd.NotSimiliar() && de.NotSimiliar() && ae.NotSimiliar())
-            {
-                if(!abc.OneLine() && !bcd.OneLine() && !abd.OneLine() && !acd.OneLine() && !abe.OneLine() && !ace.OneLine() && !ade.OneLine() && !bce.OneLine() && !bde.OneLine() && !cde.OneLine())
-                {
-                    Pentagon abcde(ab,bc,cd,de,ae);
-
-                    list<Pentagon> list_of_Pentagons;
-                    list_of_Pentagons.push_back(abcde);
-
-                    Type_of_Pent abcde2(ab, bc, cd, de, ae);
-                    cout << "Length: \nAB = " << ab.length() << "\nBC = " << bc.length() << "\nCD = " << cd.length() << "\nDE = " << de.length() <<"\nAE = " << ae.length() << endl;
-                    abcde2.IsRightPent();
-                    cout << "Perimetr ABCDE = " << abcde.Perimetr() << endl;
-
-                    if(!list_of_Pentagons.empty())
-                    {
-                        cout << "Your Pentagon was added to the List of Pentagons!!!!!!!!!!!!!" << endl;
-                    }
-                }
             }
         }
-        else
-        {
-            cout << "There is no figure under number " << i << endl;
+
+        Point q;
+        Point w;
+        Point s;
+        q.x = 3;
+        q.y = 3;
+        w.x = 12;
+        w.y = 3;
+        s.x = 5;
+        s.y = 5;
+
+        Line ln(q, w, s);
+        ln.OneLine();
+        Distance qw;
+        qw.a = q;
+        qw.b = w;
+        Distance ws;
+        ws.a = w;
+        ws.b = s;
+        Distance qs;
+        qs.a = q;
+        qs.b = s;
+
+        if (qw.NotSimiliar() && ws.NotSimiliar() && qs.NotSimiliar()) {
+            Triangle qws(qw, ws, qs);
+            if (!qws.IsTriangle()) {
+                qws.S = qws.Square();
+                qws.P = qws.Perimetr();
+                figures.push_back(qws);
+
+            }
         }
+
+        Point e;
+        e.x = 1;
+        e.y = 3;
+        Line abe(a, b, e);
+        Line ace(a, c, e);
+        Line ade(a, d, e);
+        Line bce(b, c, e);
+        Line bde(b, d, e);
+        Line cde(c, d, e);
+
+        Distance de;
+        de.a = d;
+        de.b = e;
+        Distance ae;
+        ae.a = a;
+        ae.b = e;
+
+        if (ab.NotSimiliar() && bc.NotSimiliar() && cd.NotSimiliar() && de.NotSimiliar() && ae.NotSimiliar()) {
+            if (!l.OneLine() && !bcd.OneLine() && !abd.OneLine() && !acd.OneLine() && !abe.OneLine() &&
+                !ace.OneLine() && !ade.OneLine() && !bce.OneLine() && !bde.OneLine() && !cde.OneLine()) {
+                Pentagon abcde(ab, bc, cd, de, ae);
+                abcde.S = abcde.Sq();
+                abcde.P = abcde.Perimetr();
+
+                figures.push_back(abcde);
+
+                Type_of_Pent abcde2(ab, bc, cd, de, ae);
+
+            }
+        }
+
+
+
+        Point k;
+        Point i;
+        Point t;
+        k.x = -2;
+        k.y = 1;
+        i.x = -2;
+        i.y = 5;
+        t.x = -10;
+        t.y = 4;
+
+        Line lnl(k, i, t);
+        lnl.OneLine();
+        Distance ki;
+        ki.a = k;
+        ki.b = i;
+        Distance it;
+        it.a = i;
+        it.b = t;
+        Distance kt;
+        kt.a = k;
+        kt.b = t;
+
+        if (ki.NotSimiliar() && it.NotSimiliar() && kt.NotSimiliar()) {
+            Triangle kit(ki, it, kt);
+            if (!kit.IsTriangle()) {
+                kit.S = kit.Square();
+                kit.P = kit.Perimetr();
+                figures.push_back(kit);
+
+            }
+        }
+
+        showlist(figures);
     }
     return 0;
 }

@@ -13,6 +13,8 @@ Quadrilateral::Quadrilateral(Distance d1, Distance d2, Distance d3, Distance d4,
     this->d3 = d3;
     this->d4 = d4;
     this->d1_d2 = d1_d2;
+    this->type_of_figure = "Quadrilateral";
+    this->number_of_angles = 4;
 }
 
 //Calculates perimetr of Quadrilateral

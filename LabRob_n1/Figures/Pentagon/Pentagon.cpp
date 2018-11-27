@@ -13,6 +13,8 @@ Pentagon::Pentagon(Distance d1, Distance d2, Distance d3, Distance d4, Distance 
     this->d3 = d3;
     this->d4 = d4;
     this->d5 = d5;
+    this->number_of_angles = 5;
+    this->type_of_figure = "Pentagon";
 }
 
 //Calculates Perimetr of Pentagon

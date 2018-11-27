@@ -7,11 +7,12 @@
 #define LABROB_N1_TRIANGLE_H
 
 #include "../Distance/Distance.h"
+#include "../Figure.h"
 
 /**
  * Class of Triangle
  */
-class Triangle // клас трикутників
+class Triangle : public Figure
 {
 public:
     /** first distance */

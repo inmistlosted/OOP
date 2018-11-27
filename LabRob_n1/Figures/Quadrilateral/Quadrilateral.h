@@ -7,11 +7,12 @@
 #define LABROB_N1_QUADRILATERAL_H
 
 #include "../Distance/Distance.h"
+#include "../Figure.h"
 
 /**
  * Class of Quadrilaterals
  */
-class Quadrilateral
+class Quadrilateral : public Figure
 {
 public:
     /** first diastance */

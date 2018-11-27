@@ -11,6 +11,8 @@ Triangle::Triangle(Distance d1, Distance d2, Distance d3)
     this->d1 = d1;
     this->d2 = d2;
     this->d3 = d3;
+    this->number_of_angles = 3;
+    this->type_of_figure = "Triangle";
 }
 
 //Checks if a figure is Triangle

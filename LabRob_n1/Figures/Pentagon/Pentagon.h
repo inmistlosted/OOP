@@ -7,11 +7,12 @@
 #define LABROB_N1_PENTAGON_H
 
 #include "../Distance/Distance.h"
+#include "../Figure.h"
 
 /**
  * Class of Pentagons
  */
-class Pentagon
+class Pentagon : public Figure
 {
 public:
     /** first distance */
