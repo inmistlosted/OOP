@@ -3,8 +3,12 @@
   Purpose: Makes a spider object
 */
 
+
+
 #ifndef SPIDER_H
 #define SPIDER_H
+
+#include "complexity.h"
 
 #include <QObject>
 #include <QGraphicsItem>
@@ -29,15 +33,25 @@ public:
      */
     void pause();
 
+    /**
+     * gets level of complexity
+     *
+     * @brief get_Complexity
+     * @param com
+     */
+    void get_Complexity(const int& com);
+
+
 signals:
     /**
      * Signal to call Game Over
      *
      * @brief signalCheckGameOver
      */
-    void signalCheckGameOver();
+    void CheckGameOver();
 
 public slots:
+
 
 protected:
     /**
@@ -74,13 +88,16 @@ private:
     /** target of spider(ant) */
     QGraphicsItem *target;
 
+    /** variable for complexity level */
+    int comp;
+
 private slots:
     /**
      * slot for gaming timer of spider
      *
      * @brief slotGameTimer
      */
-    void slotGameTimer();   // Слот игрового таймера паука
+    void GameTimer();   // Слот игрового таймера паука
 };
 
 #endif // SPIDER_H

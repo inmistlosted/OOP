@@ -24,9 +24,9 @@ public:
     explicit Ant(QObject *parent = nullptr);
     ~Ant();
 
- //   QMediaPlayer * m_player;
- //   QMediaPlaylist * m_playlist;
- //   QSound *move;
+    //QMediaPlayer * m_player;
+    //QMediaPlaylist * m_playlist;
+    //QSound *move;
 
 signals:
     /**
@@ -35,7 +35,7 @@ signals:
      * @brief signalCheckItem
      * @param item
      */
-    void signalCheckItem(QGraphicsItem *item);
+    void CheckItem(QGraphicsItem *item);
 
 public slots:
     /**
@@ -43,7 +43,7 @@ public slots:
      *
      * @brief slotGameTimer
      */
-    void slotGameTimer();
+    void GameTimer();
 
 protected:
     /**
@@ -76,4 +76,4 @@ private:
     //QSound *move;
 };
 
-#endif // TRIANGLE_H
+#endif // ANT_H

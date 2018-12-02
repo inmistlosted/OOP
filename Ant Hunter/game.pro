@@ -29,16 +29,28 @@ SOURCES += \
         widget.cpp \
     spider.cpp \
     pear.cpp \
-    ant.cpp
+    ant.cpp \
+    complexity.cpp \
+    gameover.cpp \
+    leader.cpp \
+    leader_board.cpp
 
 HEADERS += \
         widget.h \
     spider.h \
     pear.h \
-    ant.h
+    ant.h \
+    complexity.h \
+    gameover.h \
+    leader.h \
+    leader_board.h
 
 FORMS += \
-        widget.ui
+        widget.ui \
+    complexity.ui \
+    gameover.ui \
+    leader.ui \
+    leader_board.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

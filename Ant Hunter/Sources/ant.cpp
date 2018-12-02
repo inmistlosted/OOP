@@ -13,15 +13,13 @@ Ant::Ant(QObject *parent) :
    countForSteps = 0;
    setRotation(angle);
 
-  // m_player = new QMediaPlayer(this);
-  // m_playlist = new QMediaPlaylist(m_player);
-
-  // move = new QSound("://Music/ant_move.wav");
- //move->setLoops(QSound::Infinite);
-
- //  m_player->setPlaylist(m_playlist);
-  // m_playlist->addMedia(QUrl("qrc://Music/ant_move.wav"));
- //  m_playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+   //m_player = new QMediaPlayer(this);
+   //m_playlist = new QMediaPlaylist(m_player);
+   //move = new QSound("://Music/ant_move.wav");
+   //move->setLoops(QSound::Infinite);
+   //m_player->setPlaylist(m_playlist);
+   //m_playlist->addMedia(QUrl("qrc://Music/ant_move.wav"));
+   //m_playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
 }
 
 Ant::~Ant()
@@ -159,34 +157,34 @@ void Ant::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidg
 }
 
 //slot for gaming timer of ant
-void Ant::slotGameTimer()
+void Ant::GameTimer()
 {
 /** checks if one of control keys was pressed before counting steps */
-        if(GetAsyncKeyState(VK_LEFT) ||
-           GetAsyncKeyState(VK_RIGHT) ||
-           GetAsyncKeyState(VK_UP) ||
-           GetAsyncKeyState(VK_DOWN))
+        if(GetAsyncKeyState(65) ||
+           GetAsyncKeyState(68) ||
+           GetAsyncKeyState(87) ||
+           GetAsyncKeyState(83))
         {
             /** checks which key was pressed by turn and rotate object*/
-            if(GetAsyncKeyState(VK_LEFT))
+            if(GetAsyncKeyState(65))
             {
                 angle -= 5;
                 setRotation(angle);
             }
-            if(GetAsyncKeyState(VK_RIGHT))
+            if(GetAsyncKeyState(68))
             {
                 angle += 5;
                 setRotation(angle);
             }
 
             /** moves object on 5px forward */
-            if(GetAsyncKeyState(VK_UP))
+            if(GetAsyncKeyState(87))
             {
                 setPos(mapToParent(0, -2));
             }
 
             /** moves object on 5px backward */
-            if(GetAsyncKeyState(VK_DOWN))
+            if(GetAsyncKeyState(83))
             {
                 setPos(mapToParent(0, 2));
             }
@@ -251,7 +249,7 @@ void Ant::slotGameTimer()
         foreach (QGraphicsItem *item, foundItems) {
             if (item == this)
                 continue;
-            emit signalCheckItem(item);
+            emit CheckItem(item);
         }
 }
 

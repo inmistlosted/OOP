@@ -22,7 +22,7 @@ Spider::Spider(QGraphicsItem *target, QObject *parent) :
     timer = new QTimer();
 
     /** connects signal of timer to game slot of spider */
-    connect(timer, &QTimer::timeout, this, &Spider::slotGameTimer);
+    connect(timer, &QTimer::timeout, this, &Spider::GameTimer);
     timer->start(15);
 }
 
@@ -196,16 +196,18 @@ void Spider::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
     /** head of spider */
     painter->setBrush(QColor(33,29,29));
+    painter->setPen(QPen(QColor(249, 4, 241),3));
     painter->drawEllipse(-10,-25,20,15);
 
     /** body of spider */
     painter->drawEllipse(-15, -15, 30, 30);
 
     /** back part of spider */
+    painter->setPen(QPen(QColor(249, 4, 241),3));
     painter->drawEllipse(-20, 0, 40,50);
-    painter->setPen(QPen(QColor(247,11,11),3));
-    painter->drawLine(-10,25,10,25);
-    painter->drawLine(0,35,0,15);
+
+    //painter->drawLine(-10,25,10,25);
+    //painter->drawLine(0,35,0,15);
 
     /** left eye */
     painter->setPen(QPen(Qt::black,1));
@@ -221,7 +223,7 @@ void Spider::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 }
 
 //slot for gaming timer of spider
-void Spider::slotGameTimer()
+void Spider::GameTimer()
 {
     QLineF lineToTarget(QPointF(0, 0), mapFromItem(target, 0, 0));
     qreal angleToTarget = ::acos(lineToTarget.dx() / lineToTarget.length());
@@ -269,11 +271,22 @@ void Spider::slotGameTimer()
 
     setRotation(rotation() + angle);
 
-    /** running to the spider */
+    /** complexity level */
+    int complexity = comp;
+    /** running of the spider */
     if(lineToTarget.length() >= 40)
     {
-        setPos(mapToParent(0, -(qrand() % ((4 + 1) - 1) + 1)));
-
+        if(complexity == 1){
+        setPos(mapToParent(0, -(qrand() % ((2 + 1) - 1) + 1)));
+        }
+        else if(complexity == 2)
+        {
+             setPos(mapToParent(0, -(qrand() % ((3 + 1) - 1) + 1)));
+        }
+        else
+        {
+             setPos(mapToParent(0, -(qrand() % ((4 + 1) - 1) + 1)));
+        }
         countForSteps++;
         if(countForSteps == 6)
         {
@@ -308,7 +321,7 @@ void Spider::slotGameTimer()
         if (item == this)
             continue;
         if(item == target){
-            emit signalCheckGameOver();
+            emit CheckGameOver();
         }
     }
 
@@ -343,4 +356,9 @@ void Spider::pause()
     {
         timer->start(15);
     }
+}
+
+void Spider::get_Complexity(const int &com)
+{
+    comp = com;
 }

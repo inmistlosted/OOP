@@ -22,6 +22,10 @@
 #include <ant.h>
 #include <pear.h>
 #include <spider.h>
+#include <complexity.h>
+#include <gameover.h>
+#include <leader.h>
+#include <leader_board.h>
 
 #define GAME_STOPED 0
 #define GAME_STARTED 1
@@ -47,14 +51,14 @@ private slots:
      * @brief slotDeletePear
      * @param item
      */
-    void slotDeletePear(QGraphicsItem * item);
+    void DeletePear(QGraphicsItem * item);
 
     /**
      * Creates pears
      *
      * @brief slotCreatePear
      */
-    void slotCreatePear();
+    void CreatePear();
 
     /**
      * Starts game
@@ -68,17 +72,50 @@ private slots:
      *
      * @brief slotGameOver
      */
-    void slotGameOver();
+    void GameIsOver();
 
     /**
      * Pauses game
      *
      * @brief slotPause
      */
-    void slotPause();
+    void Pause();
+
+    /**
+     * opens dialog to choose complexity
+     *
+     * @brief Choose_Complexity
+     */
+    void Choose_Complexity();
+
+    /**
+     * opens ResultBoard
+     *
+     * @brief Open_LeaderBoard
+     */
+    void Open_ResultBoard();
+
+    /**
+     * adds player's result to ResultBoard
+     *
+     * @brief Add_Leader
+     */
+    void Add_Leader();
 
 private:
     Ui::Widget *ui;
+
+    /** dialog to choose complexity */
+    Complexity *com;
+
+    /** dialog to alert that game is over */
+    GameOver *game_over;
+
+    /** widget for player's name and result */
+    Leader *contestant;
+
+    /** creates ResultBoard */
+    Leader_board *board;
 
     /** Graphics Scene */
     QGraphicsScene *scene;
