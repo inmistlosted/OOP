@@ -1,9 +1,4 @@
-#include <iostream>
-#include <d:/libraries/Eigen/Dense>
-#include <vector>
-
-using namespace Eigen;
-using namespace std;
+#include "functions.h"
 
 int main() {
     int n1, m1, n2, m2, operation, quantity, vec_width, ques;
@@ -53,13 +48,11 @@ int main() {
             if (operation == 1) {
                 cout << "Enter Scalar: ";
                 cin >> scalar;
-                cout << "SCALAR MULTIPLICATION" << endl;
-                cout << "Result-Matrix: " << endl << matrix1 * scalar << endl;
+                Scalar_multiplication(matrix1, scalar);
             } else if (operation == 2) {
                 cout << "Enter Scalar: ";
                 cin >> scalar;
-                cout << "SCALAR DIVISION" << endl;
-                cout << "Result-Matrix: " << endl << matrix1 / scalar << endl;
+                Scalar_division(matrix1, scalar);
             } else if (operation == 3) {
                 cout << "TRANSPOSITION" << endl;
                 cout << "Result-Matrix: " << endl << matrix1.transpose() << endl;
@@ -72,45 +65,41 @@ int main() {
                 cout << "Enter width of Vector: ";
                 cin >> vec_width;
                 cout << endl;
-                VectorXd vector1;
+                VectorXd vector1(vec_width);
+                if(vec_width != n1)
+                {
+                    cout << "ERROR!!!" << endl;
+                }
+                else {
+                    cout << "Enter value of vector: ";
                     for (int j = 0; j < vec_width; j++) {
                         cin >> v[j];
                         vector1(j) = v[j];
                     }
-                cout << "VECTOR MULTIPLICATION" << endl;
-                cout << "Result-Matrix: " << endl << matrix1 * vector1 << endl;
+                    Vector_multiplication(matrix1, vector1);
+                }
             }
             else if (operation == 6) {
-                cout << "SQUARED MATRIX" << endl;
-                cout << "Result-Matrix: " << endl << matrix1 * matrix1 << endl;
+                Squared_Matrix(matrix1);
             }
             else if (operation == 7) {
-                cout << "SUM OF ALL ELEMENTS" << endl;
-                cout << "Sum of all elements = " << matrix1.sum() << endl;
+                Sum_elements(matrix1);
             }
             else if (operation == 8) {
-                cout << "PRODUCT OF ALL ELEMENTS" << endl;
-                cout << "Product of all elements = " << matrix1.prod() << endl;
+                Product_elements(matrix1);
             }
             else if (operation == 9) {
-                cout << "AVERAGE VALUE OF ALL ELEMENTS" << endl;
-                cout << "Average value of all elements = " << matrix1.mean() << endl;
+                Average(matrix1);
             }
             else if (operation == 10) {
                 cout << "DETERMINANT" << endl;
                 cout << "Determinant of matrix = " << matrix1.determinant() << endl;
             }
             else if (operation == 11) {
-                cout << "MINIMAL ELEMENT" << endl;
-                ptrdiff_t i,j;
-                double min1 = matrix1.minCoeff(&i,&j);
-                cout << "Minimal element = " << min1 << "it's position (" << i << ", " << j << ")" << endl;
+                MinElement(matrix1);
             }
             else if (operation == 12) {
-                cout << "MAXIMAL ELEMENT" << endl;
-                ptrdiff_t i,j;
-                double max1 = matrix1.maxCoeff(&i,&j);
-                cout << "Maximal element = " << max1 << "it's position (" << i << ", " << j << ")" << endl;
+                MaxElement(matrix1);
             }
             cout << "Do you want to choose other operation? (1 - yes, 2 - no)";
             cin >> ques;
@@ -177,20 +166,17 @@ int main() {
                 if (n1 != n2 || m1 != m2) {
                     cout << "ERROR! Matrixes have to be the same size to be able to SUM" << endl;
                 } else {
-                    cout << "SUM" << endl;
-                    cout << "Result-Matrix: " << endl << matrix1 + matrix2 << endl;
+                    Sum_Matrix(matrix1, matrix2);
                 }
             } else if (operation == 2) {
                 if (n1 != n2 || m1 != m2) {
                     cout << "ERROR! Matrixes have to be the same size to be able to SUBTRACT" << endl;
                 } else {
-                    cout << "SUBTRACTION" << endl;
-                    cout << "Result-Matrix: " << endl << matrix1 - matrix2 << endl;
+                    Subtraction_Matrix(matrix1, matrix2);
                 }
             } else if (operation == 3) {
                 if (n1 == m2) {
-                    cout << "MULTIPLICATION" << endl;
-                    cout << "Result-Matrix: " << endl << matrix1 * matrix2 << endl;
+                    Multiply_Matrix(matrix1,matrix2);
                 } else {
                     cout << "ERROR! Matrixes have to be the same size to be able to MULTIPLY" << endl;
                 }
